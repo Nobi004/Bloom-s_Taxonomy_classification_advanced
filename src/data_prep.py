@@ -4,12 +4,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 import os 
 
-df = pd.read_csv("blooms.csv")
+df = pd.read_csv("D:\\new project\\Bloom-s_Taxonomy_classification_advanced\\blooms.csv")
 
 print(df.head())
-
+print(df.tail())
+df['text'] = df['Questions']
 df['text'] = df['text'].str.strip().str.lower().str.replace('"','')
 
+df['label'] = df['Category']
 label_encoder = LabelEncoder()
 df['label'] = label_encoder.fit_transform(df['label'])
 
